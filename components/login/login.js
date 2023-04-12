@@ -24,6 +24,7 @@ export default function Login({ changeStatus }) {
       <Image
         source={require('../../assets/JN1.png')}
         style={{ width: 420, height: 340 }}></Image>
+           <Separator/>
       <SafeAreaView>
 
         <TextInput
