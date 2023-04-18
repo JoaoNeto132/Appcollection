@@ -5,7 +5,7 @@ import {
   Text,
   Image,
   SafeAreaView,
-  Button,
+  handleLogin,
   TouchableOpacity,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
@@ -24,7 +24,7 @@ export default function Login({ changeStatus }) {
       <Image
         source={require('../../assets/JN1.png')}
         style={{ width: 420, height: 340 }}></Image>
-           <Separator/>
+      <Separator />
       <SafeAreaView>
 
         <TextInput
@@ -39,22 +39,18 @@ export default function Login({ changeStatus }) {
           style={styles.input}
           value={password}
           onChangeText={(text) => setPassword(text)}
+          secureTextEntry
           right={<TextInput.Icon icon="eye" />}
         />
         <hr />
-        <Button
-          onPress={() => this.props.navigation.navigate('Login')}
-          title="ACESSAR"
-          color="#000000"
-        />
       </SafeAreaView>
 
       <TouchableOpacity
         style={[
           styles.handleLogin,
-          { backgroundColor: type === 'login' ? '#4682B4' : '#141414' },
+          { backgroundColor: type === 'login' ? '#000000' : '#141414' },
         ]}
-        onPress={'handleLogin'}>
+        onPress={handleLogin}>
         <Text style={styles.loginText}>
           {type === 'login' ? 'Acessar' : 'Cadastrar'}
         </Text>
@@ -81,11 +77,18 @@ const styles = StyleSheet.create({
     width: 320,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#141414'
+    borderColor: '#000000'
+  },
+  handleLogin: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 45,
+    marginTop: 30,
   },
   loginText: {
-    textAlign: 'center'
-  }
+    color: '#FFF',
+    fontSize: 24,
+  },
 }
 );
 
