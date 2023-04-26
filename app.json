@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "appjncollection",
-    "slug": "snack-8150d4c6-0f02-48fa-aee3-d6050940d22a",
+    "name": "projeto_boer",
+    "slug": "snack-c4e40e80-9bb5-4f1d-923c-d3ef62e27817",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,6 +28,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "SlimeShopp"
   }
 }
