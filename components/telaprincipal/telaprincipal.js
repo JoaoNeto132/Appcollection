@@ -1,10 +1,5 @@
 import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  SafeAreaView,
-  Button,
+  Text, View, StyleSheet, Image, SafeAreaView, Button,
 } from 'react-native';
 import React from 'react';
 
@@ -17,7 +12,7 @@ class TelaPrincipal extends React.Component {
     return (
       <View style={styles.container}>
         {' '}
-        <Image style={styles.logo} source={require('../../assets/SlimeShopp.png')} />
+        <Image style={styles.logo} source={require('../../assets/JN.png')} />
         <Text style={styles.paragraph}>Buy better</Text>     {' '}
         <SafeAreaView style={styles.container}>
 

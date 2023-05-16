@@ -69,9 +69,6 @@ export default function Login({ changeStatus }) {
           {type === 'login' ? 'Acessar' : 'Cadastrar'}
         </Text>
       </TouchableOpacity>
-
-
-
       <TouchableOpacity onPress={() => setType(type => type === 'login' ? 'cadastrar' : 'login')} >
         <Text style={{ textAlign: 'center' }}>
           {type === 'login' ? 'Criar uma conta' : 'Já possuo uma conta'}
@@ -94,23 +91,15 @@ const styles = StyleSheet.create({
     borderColor: '#141414'
   },
   handleLogin: {
-
     alignItems: 'center',
-
     justifyContent: 'center',
-
     height: 45,
-
     marginTop: 30,
-
   },
 
   loginText: {
-
     color: '#FFF',
-
     fontSize: 24,
-
   },
   loginText: {
     textAlign: 'center'

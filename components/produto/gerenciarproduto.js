@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-
 import {
-
-    View, Text, StyleSheet,
-
-    TouchableOpacity, Keyboard, FlatList, ActivityIndicator
-
+    View, Text, StyleSheet, TouchableOpacity, Keyboard, FlatList, ActivityIndicator, separator
 } from 'react-native';
-
 import { TextInput } from 'react-native-paper';
+
+const Separator = () => {
+    return <View style={styles.separator} />;
+}
 
 export default function GerenciarProdutos() {
 
@@ -20,6 +18,7 @@ export default function GerenciarProdutos() {
 
     return (
         <View style={styles.container}>
+            <separator />
             <TextInput
                 placeholder='Produto'
                 left={<TextInput.Icon icon="car" />}
@@ -28,6 +27,7 @@ export default function GerenciarProdutos() {
                 onChangeText={(text) => setNome(text)}
                 value={nome}
             />
+            <separator />
             <TextInput
 
                 placeholder='Marca'
@@ -39,6 +39,7 @@ export default function GerenciarProdutos() {
                 onChangeText={(text) => setMarca(text)}
                 value={marca}
             />
+            <separator />
             <TextInput
                 placeholder='Preço (R$)'
                 left={<TextInput.Icon icon="sack" />}
@@ -46,6 +47,7 @@ export default function GerenciarProdutos() {
                 onChangeText={(text) => setValor(text)}
                 value={valor}
             />
+            <separator />
             <TextInput
                 placeholder='Cor'
                 left={<TextInput.Icon icon="palette" />}
@@ -53,6 +55,7 @@ export default function GerenciarProdutos() {
                 onChangeText={(text) => setCor(text)}
                 value={cor}
             />
+            <separator />
         </View>
     );
 }
@@ -68,10 +71,12 @@ const styles = StyleSheet.create({
         borderColor: '#121212',
         height: 40,
         fontSize: 13,
-        borderRadius: 8
+        borderRadius: 8,
+        marginBottom: 10,
     },
     separator: {
-        marginVertical: 5,
+        marginVertical: 25,
+        borderColor: '#737373',
     },
 
     button: {
@@ -84,7 +89,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         margin: 5,
     },
-
     buttonImageIconStyle: {
         padding: 10,
         margin: 5,
