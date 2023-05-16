@@ -1,16 +1,11 @@
 import * as React from 'react';
-import { View, StyleSheet, Text} from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
-
-
- 
+import GerenciarProdutos from '../produto/gerenciarproduto';
 
 //import LinearGradient from 'react-native-linear-gradient';
-
- 
 
 function HomeScreen() {
     return (
@@ -20,8 +15,6 @@ function HomeScreen() {
     );
 }
 
- 
-
 function ListScreen() {
     return (
         <View style={styles.container}>
@@ -30,13 +23,9 @@ function ListScreen() {
     );
 }
 
- 
-
-function PostScreen() {
-    return <Produtos />
+function ProdutosScreen() {
+    return <GerenciarProdutos />
 }
-
- 
 
 function NotificationsScreen() {
     return (
@@ -46,11 +35,7 @@ function NotificationsScreen() {
     );
 }
 
- 
-
 const Tab = createBottomTabNavigator();
-
- 
 
 export default function App() {
     return (
@@ -60,7 +45,7 @@ export default function App() {
                     tabBarIcon: ({ color, size }) => {
                         let iconName;
 
- 
+
 
                         switch (route.name) {
                             case 'Home':
@@ -70,7 +55,7 @@ export default function App() {
                                 iconName = 'list';
                                 break;
                             case 'Camisas':
-                                iconName = 'shirt';
+                                iconName = 'tshirt';
                                 break;
                             case 'Ler API':
                                 iconName = 'bell';
@@ -80,7 +65,7 @@ export default function App() {
                                 break;
                         }
 
- 
+
 
                         return <Icon name={iconName} size={size} color={color} />;
                     },
@@ -94,35 +79,69 @@ export default function App() {
                 <Tab.Screen name="Home" component={HomeScreen} />
                 <Tab.Screen name="Listar" component={ListScreen} />
                 <Tab.Screen
-                    name="Outros"
-                    component={PostScreen}
+                    name="Camisas"
+                    component={ProdutosScreen}
                 />
                 <Tab.Screen name="Ler API" component={NotificationsScreen} />
-                </Tab.Navigator>
+            </Tab.Navigator>
         </NavigationContainer>
     );
 }
 
- 
-
 const styles = StyleSheet.create({
+
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        margin: 10,
     },
-    iconTabRound: {
-        width: 60,
-        height: 90,
-        borderRadius: 30,
-        marginBottom: 20,
+
+    input: {
+        borderWidth: 1,
+        borderColor: '#121212',
+        height: 40,
+        fontSize: 13,
+        borderRadius: 8
+    },
+
+    separator: {
+        marginVertical: 5,
+    },
+
+    button: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        elevation: 6,
-        shadowColor: '#9C27B0',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
+        backgroundColor: '#3ea6f2',
+        borderWidth: 0.5,
+        borderColor: '#fff',
+        height: 40,
+        borderRadius: 5,
+        margin: 5,
+    },
+
+    buttonImageIconStyle: {
+
+        padding: 10,
+        margin: 5,
+        height: 25,
+        width: 25,
+        resizeMode: 'stretch',
+    },
+
+    buttonTextStyle: {
+        color: '#fff',
+        marginBottom: 4,
+        marginLeft: 100,
+        fontSize: 20
+    },
+
+    buttonIconSeparatorStyle: {
+        backgroundColor: '#fff',
+        width: 1,
+        height: 20,
+    },
+
+    listar: {
+        fontSize: 20,
+        textAlign: 'center'
     }
-});
+}); 
