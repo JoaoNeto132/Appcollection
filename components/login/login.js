@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import firebase from '../../assets/services/connectionFirebase';
 const Separator = () => <View style={styles.separator} />;
@@ -8,29 +8,29 @@ export default function Login({ changeStatus }) {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('login');
 
-  function handleLogin(){
-    if(type === 'login'){
+  function handleLogin() {
+    if (type === 'login') {
       // Aqui fazemos o login
       const user = firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        changeStatus(user.user.uid)
-      })
-      .catch((err)=>{
-        console.log(err);
-        alert('Email ou senha não cadastrados!');
-        return;
-      })   
-    }else{
-     // Aqui cadastramos o usuario
-     const user = firebase.auth().createUserWithEmailAndPassword(email, password)
-     .then((user)=>{
-       changeStatus(user.user.uid)
-     })
-     .catch((err)=>{
-      console.log(err);
-      alert('Erro ao Cadastrar!');
-      return;
-     })
+        .then((user) => {
+          changeStatus(user.user.uid)
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('Email ou senha não cadastrados!');
+          return;
+        })
+    } else {
+      // Aqui cadastramos o usuario
+      const user = firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((user) => {
+          changeStatus(user.user.uid)
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('Erro ao Cadastrar!');
+          return;
+        })
     }
   }
 

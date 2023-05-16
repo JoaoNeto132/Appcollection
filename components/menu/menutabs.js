@@ -43,10 +43,7 @@ export default function App() {
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ color, size }) => {
-                        let iconName;
-
-
-
+                        let iconName
                         switch (route.name) {
                             case 'Home':
                                 iconName = 'store';
@@ -64,8 +61,6 @@ export default function App() {
                                 iconName = 'add-circle-outline';
                                 break;
                         }
-
-
 
                         return <Icon name={iconName} size={size} color={color} />;
                     },
