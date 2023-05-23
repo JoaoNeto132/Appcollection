@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    View, Text, StyleSheet, TouchableOpacity, Keyboard, FlatList, ActivityIndicator, separator
+    View, Text, StyleSheet, TouchableOpacity, Keyboard, Button, FlatList, ActivityIndicator, separator
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import firebase from '../../services/connectionFirebase';
 
 const Separator = () => {
     return <View style={styles.separator} />;
@@ -12,10 +13,46 @@ export default function GerenciarProdutos() {
 
     const [nome, setNome] = useState('');
     const [marca, setMarca] = useState('');
-    const [valor, setValor] = useState('');
+    const [preco, setPreco] = useState('');
     const [cor, setCor] = useState('');
     const [key, setKey] = useState('');
 
+    //implementação dos métodos update ou insert 
+
+    async function insertUpdate() {
+
+        //editar dados 
+
+        if (nome !== '' & marca !== '' & imagem !== '' & preco !== '' & key !== '') {
+            firebase.database().ref('produtos').child(key).update({
+                nome: nome, marca: marca, imagem: imagem, preco: preco
+            })
+            Keyboard.dismiss();
+            alert('Produto Editado!');
+            clearFields();
+            setKey('');
+            return;
+        }
+        //cadastrar dados 
+        let produtos = await firebase.database().ref('produtos');
+        let chave = produtos.push().key; //comando para salvar é o push 
+        produtos.child(chave).set({
+            nome: nome,
+            marca: marca,
+            imagem: imagem,
+            preco: preco
+        });
+        Keyboard.dismiss();
+        alert('Produto Cadastrado!');
+        clearFields();
+    }
+
+    function clearFields(){
+        setNome('');
+        setMarca('');
+        setPreco('');
+        setCor('');
+    }
     return (
         <View style={styles.container}>
             <separator />
@@ -44,8 +81,8 @@ export default function GerenciarProdutos() {
                 placeholder='Preço (R$)'
                 left={<TextInput.Icon icon="sack" />}
                 style={styles.input}
-                onChangeText={(text) => setValor(text)}
-                value={valor}
+                onChangeText={(text) => setPreco(text)}
+                value={preco}
             />
             <separator />
             <TextInput
@@ -55,6 +92,13 @@ export default function GerenciarProdutos() {
                 onChangeText={(text) => setCor(text)}
                 value={cor}
             />
+            <View style={styles.button}>
+                <Button
+                    onPress={insertUpdate}
+                    title="Enviar"
+                    color="#3ea6f2"
+                />
+            </View>
             <separator />
         </View>
     );
@@ -64,6 +108,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         margin: 10,
+    },
+
+    button: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: '#3ea6f2',
+        borderWidth: 0.5,
+        borderColor: '#fff',
+        height: 40,
+        borderRadius: 5,
+        margin: 5,
     },
 
     input: {
