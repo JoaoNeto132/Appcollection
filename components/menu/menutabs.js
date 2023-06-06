@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import GerenciarProdutos from '../produto/gerenciarproduto';
+import GerenciarPerfil from '../perfil/gerenciarperfil';
 
 //import LinearGradient from 'react-native-linear-gradient';
 
@@ -15,12 +16,8 @@ function HomeScreen() {
     );
 }
 
-function ListScreen() {
-    return (
-        <View style={styles.container}>
-            <Text></Text>
-        </View>
-    );
+function PerfilScreen() {
+    return <GerenciarPerfil />
 }
 
 function ProdutosScreen() {
@@ -48,11 +45,11 @@ export default function App() {
                             case 'Home':
                                 iconName = 'store';
                                 break;
-                            case 'Listar':
-                                iconName = 'list';
+                            case 'Perfil':
+                                iconName = 'smile';
                                 break;
-                            case 'Camisas':
-                                iconName = 'tshirt';
+                            case 'Carro':
+                                iconName = 'car';
                                 break;
                             case 'Ler API':
                                 iconName = 'bell';
@@ -72,9 +69,9 @@ export default function App() {
                 }}
             >
                 <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="Listar" component={ListScreen} />
+                <Tab.Screen name="Perfil" component={PerfilScreen} />
                 <Tab.Screen
-                    name="Camisas"
+                    name="Carro"
                     component={ProdutosScreen}
                 />
                 <Tab.Screen name="Ler API" component={NotificationsScreen} />
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
         height: 20,
     },
 
-    listar: {
+    Perfil: {
         fontSize: 20,
         textAlign: 'center'
     }

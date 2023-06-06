@@ -9,12 +9,13 @@ const Separator = () => {
     return <View style={styles.separator} />;
 }
 
-export default function GerenciarProdutos() {
+export default function GerenciarPerfil() {
 
     const [nome, setNome] = useState('');
-    const [marca, setMarca] = useState('');
-    const [preco, setPreco] = useState('');
-    const [cor, setCor] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [email, setEmail] = useState('');
+    const [idade, setIdade] = useState('');
+    const [endereco, setEndereco] = useState('');
     const [key, setKey] = useState('');
 
     //implementação dos métodos update ou insert 
@@ -23,45 +24,44 @@ export default function GerenciarProdutos() {
 
         //editar dados 
 
-        if (nome !== '' & marca !== '' & imagem !== '' & preco !== '' & key !== '') {
-            firebase.database().ref('produtos').child(key).update({
-                nome: nome, 
-                marca: marca, 
-                preco: preco,
-                cor: cor
+        if (nome !== '' & telefone !== '' & email !== '' & endereco !== '' & key !== '') {
+            firebase.database().ref('perfil').child(key).update({
+                nome: nome, telefone: telefone, email: email, idade: idade, endereco: endereco
             })
             Keyboard.dismiss();
-            alert('Produto Editado!');
+            alert('Perfil!');
             clearFields();
             setKey('');
             return;
         }
         //cadastrar dados 
-        let produtos = await firebase.database().ref('produtos');
-        let chave = produtos.push().key; //comando para salvar é o push 
-        produtos.child(chave).set({
+        let perfil = await firebase.database().ref('perfil');
+        let chave = perfil.push().key; //comando para salvar é o push 
+        perfil.child(chave).set({
             nome: nome,
-            marca: marca,
-            preco: preco,
-            cor: cor
+            telefone: telefone,
+            email: email,
+            idade: idade,
+            endereco: endereco
         });
         Keyboard.dismiss();
-        alert('Produto Cadastrado!');
+        alert('Perfil Cadastrado!');
         clearFields();
     }
 
     function clearFields(){
         setNome('');
-        setMarca('');
-        setPreco('');
-        setCor('');
+        setTelefone('');
+        setEmail('');
+        setIdade('');
+        setEndereco('');
     }
     return (
         <View style={styles.container}>
             <separator />
             <TextInput
-                placeholder='Produto'
-                left={<TextInput.Icon icon="car" />}
+                placeholder='Perfil'
+                left={<TextInput.Icon icon="face-smile" />}
                 maxLength={40}
                 style={styles.input}
                 onChangeText={(text) => setNome(text)}
@@ -70,30 +70,30 @@ export default function GerenciarProdutos() {
             <separator />
             <TextInput
 
-                placeholder='Marca'
+                placeholder='Telefone'
 
-                left={<TextInput.Icon icon="sale" />}
+                left={<TextInput.Icon icon="phone" />}
 
                 style={styles.input}
 
-                onChangeText={(text) => setMarca(text)}
-                value={marca}
+                onChangeText={(text) => setTelefone(text)}
+                value={telefone}
             />
             <separator />
             <TextInput
-                placeholder='Preço (R$)'
-                left={<TextInput.Icon icon="sack" />}
+                placeholder='Email Pessoal'
+                left={<TextInput.Icon icon="inbox" />}
                 style={styles.input}
-                onChangeText={(text) => setPreco(text)}
-                value={preco}
+                onChangeText={(text) => setEmail(text)}
+                value={email}
             />
             <separator />
             <TextInput
-                placeholder='Cor'
-                left={<TextInput.Icon icon="palette" />}
+                placeholder='Idade'
+                left={<TextInput.Icon icon="hourglass" />}
                 style={styles.input}
-                onChangeText={(text) => setCor(text)}
-                value={cor}
+                onChangeText={(text) => setIdade(text)}
+                value={idade}
             />
             <View style={styles.button}>
                 <Button
