@@ -95,6 +95,14 @@ export default function GerenciarPerfil() {
                 onChangeText={(text) => setIdade(text)}
                 value={idade}
             />
+            <separator />
+            <TextInput
+                placeholder='Endereco'
+                left={<TextInput.Icon icon="hourglass" />}
+                style={styles.input}
+                onChangeText={(text) => setEndereco(text)}
+                value={endereco}
+            />
             <View style={styles.button}>
                 <Button
                     onPress={insertUpdate}
