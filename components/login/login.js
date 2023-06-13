@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'r
 import { TextInput } from 'react-native-paper';
 import firebase from '../../assets/services/connectionFirebase';
 const Separator = () => <View style={styles.separator} />;
+
 export default function Login({ changeStatus }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

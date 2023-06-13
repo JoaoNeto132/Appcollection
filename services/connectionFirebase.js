@@ -8,6 +8,7 @@ import 'firebase/compat/database';
 let firebaseConfig = {
   apiKey: "AIzaSyD8Limm0nQYPDQ5sa52e1nRByurU7m6R38",
   authDomain: "appboer-fecb9.firebaseapp.com",
+  databaseURL: "https://appboer-fecb9-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "appboer-fecb9",
   storageBucket: "appboer-fecb9.appspot.com",
   messagingSenderId: "514502373939",
@@ -18,7 +19,5 @@ if (!firebase.apps.length) {
     // Initialize Firebase
      firebase.initializeApp(firebaseConfig);
     }
-
- 
 
 export default firebase;
